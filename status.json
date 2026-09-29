@@ -1,0 +1,160 @@
+{
+  "$schema": "https://healthymeats.github.io/shipley-status/schema.json",
+  "version": 1,
+  "generator": "shipley-status/1.2",
+  "page": {
+    "name": "Shipley Farms",
+    "url": "https://shipleyfarmsbeef.com",
+    "contact": "beef@shipleyfarmsbeef.com"
+  },
+  "generated_at": "2026-09-29T01:17:59+00:00",
+  "last_checked_at": "2026-09-29T00:37:12+00:00",
+  "stale": false,
+  "stale_after": "2026-09-29T02:07:12+00:00",
+  "status": {
+    "indicator": "operational",
+    "severity": 0,
+    "description": "All systems operational"
+  },
+  "check": {
+    "interval_seconds": 1800,
+    "method": "unauthenticated HTTP GET from outside the hosting platform",
+    "user_agent": "ShipleyStatusProbe/1.0",
+    "degraded_above_ms": 4000
+  },
+  "components": [
+    {
+      "id": "website",
+      "name": "Website",
+      "description": "The storefront home page at shipleyfarmsbeef.com.",
+      "group": "Customer-facing",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": 93,
+      "uptime_90d": 100.0,
+      "checks_90d": 40,
+      "degraded_checks_90d": 0
+    },
+    {
+      "id": "catalog",
+      "name": "Product catalog",
+      "description": "The full product listing at /all-products.",
+      "group": "Customer-facing",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": 170,
+      "uptime_90d": 100.0,
+      "checks_90d": 40,
+      "degraded_checks_90d": 0
+    },
+    {
+      "id": "cart",
+      "name": "Cart",
+      "description": "The cart page at /cart. Does not exercise payment.",
+      "group": "Customer-facing",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": 317,
+      "uptime_90d": 100.0,
+      "checks_90d": 40,
+      "degraded_checks_90d": 0
+    },
+    {
+      "id": "accounts",
+      "name": "Customer accounts",
+      "description": "The sign-in page at /login. Does not attempt a sign-in.",
+      "group": "Customer-facing",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": 130,
+      "uptime_90d": 97.5,
+      "checks_90d": 40,
+      "degraded_checks_90d": 0
+    },
+    {
+      "id": "wholesale",
+      "name": "Wholesale",
+      "description": "The wholesale landing page at /wholesale.",
+      "group": "Customer-facing",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": 176,
+      "uptime_90d": 100.0,
+      "checks_90d": 40,
+      "degraded_checks_90d": 0
+    },
+    {
+      "id": "gift_cards",
+      "name": "Gift cards",
+      "description": "The gift card page at /gift-cards.",
+      "group": "Customer-facing",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": 82,
+      "uptime_90d": 100.0,
+      "checks_90d": 40,
+      "degraded_checks_90d": 1
+    },
+    {
+      "id": "api",
+      "name": "Storefront API",
+      "description": "Unauthenticated liveness endpoint at /api/method/ping, returns pong.",
+      "group": "Platform",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": 114,
+      "uptime_90d": 100.0,
+      "checks_90d": 40,
+      "degraded_checks_90d": 0
+    },
+    {
+      "id": "tls",
+      "name": "TLS certificate",
+      "description": "Certificate validity and remaining lifetime for shipleyfarmsbeef.com.",
+      "group": "Platform",
+      "status": "operational",
+      "severity": 0,
+      "detail": "Responding normally",
+      "response_time_ms": null,
+      "uptime_90d": 100.0,
+      "checks_90d": 40,
+      "degraded_checks_90d": 0
+    }
+  ],
+  "incidents": {
+    "open": [],
+    "recent": [
+      {
+        "component": "accounts",
+        "status": "outage",
+        "started_at": "2026-09-28T09:32:27",
+        "ended_at": "2026-09-28T09:32:54",
+        "duration_minutes": 1,
+        "detail": "Slow response"
+      },
+      {
+        "component": "gift_cards",
+        "status": "degraded",
+        "started_at": "2026-09-28T09:32:27",
+        "ended_at": "2026-09-28T09:32:54",
+        "duration_minutes": 1,
+        "detail": "Slow response"
+      }
+    ]
+  },
+  "uptime": {
+    "window_days": 90,
+    "reference_component": "website",
+    "percent": 100.0,
+    "checks": 40,
+    "degraded_checks": 0,
+    "days_with_data": 1
+  }
+}

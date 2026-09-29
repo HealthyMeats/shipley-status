@@ -1,0 +1,1211 @@
+{
+  "version": 1,
+  "generator": "shipley-status/1.2",
+  "generated_at": "2026-09-29T01:17:59+00:00",
+  "window_days": 90,
+  "note": "A null component means no checks ran that day. It is not zero uptime and it is not full uptime. Days with no checks are excluded from every percentage published here.",
+  "days": [
+    {
+      "date": "2026-07-01",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-02",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-03",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-04",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-05",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-06",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-07",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-10",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-11",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-12",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-13",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-14",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-15",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-17",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-18",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-19",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-20",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-21",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-25",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-28",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-29",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-14",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-17",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-20",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-22",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-24",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-28",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-29",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-30",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-08-31",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-01",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-02",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-03",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-05",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-07",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-09",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-10",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-11",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-12",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-13",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-15",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-16",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-18",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-19",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-20",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "components": {
+        "website": null,
+        "catalog": null,
+        "cart": null,
+        "accounts": null,
+        "wholesale": null,
+        "gift_cards": null,
+        "api": null,
+        "tls": null
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "components": {
+        "website": {
+          "operational": 40,
+          "degraded": 0,
+          "outage": 0
+        },
+        "catalog": {
+          "operational": 40,
+          "degraded": 0,
+          "outage": 0
+        },
+        "cart": {
+          "operational": 40,
+          "degraded": 0,
+          "outage": 0
+        },
+        "accounts": {
+          "operational": 39,
+          "degraded": 0,
+          "outage": 1
+        },
+        "wholesale": {
+          "operational": 40,
+          "degraded": 0,
+          "outage": 0
+        },
+        "gift_cards": {
+          "operational": 39,
+          "degraded": 1,
+          "outage": 0
+        },
+        "api": {
+          "operational": 40,
+          "degraded": 0,
+          "outage": 0
+        },
+        "tls": {
+          "operational": 40,
+          "degraded": 0,
+          "outage": 0
+        }
+      }
+    }
+  ]
+}

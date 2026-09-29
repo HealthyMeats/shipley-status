@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+  Shipley Farms branded 404 / origin-down page, fully self-contained.
+  Zero external requests (inline CSS, inline SVG), so it renders identically
+  from any IPFS gateway even when shipleyfarmsbeef.com is unreachable.
+  Brand colors/taglines sourced from brand-guidelines.md.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Not Found | Shipley Farms Beef</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root {
+      --red: #f80010;
+      --red-dark: #c90000;
+      --ink: #3d3d3d;
+      --cream: #eae5dc;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--cream); color: var(--ink);
+      font: 17px/1.6 Georgia, "Times New Roman", serif;
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px 18px;
+    }
+    .card {
+      background: var(--white); max-width: 540px; width: 100%;
+      border-radius: 6px; border-top: 6px solid var(--red);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      padding: 44px 40px; text-align: center;
+    }
+    .kicker {
+      font: 700 12px/1 Arial, sans-serif; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--red-dark); margin-bottom: 22px;
+    }
+    .code { font: 800 64px/1 Arial, sans-serif; color: var(--red); margin: 0; }
+    h1 { font-size: 26px; margin: 10px 0 8px; color: #2c2c2c; }
+    p { margin: 0 auto 18px; max-width: 38ch; color: #555; }
+    .rule { width: 48px; height: 3px; background: var(--red); margin: 22px auto; border: 0; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+    .btn {
+      font: 700 14px/1 Arial, sans-serif; text-decoration: none;
+      padding: 14px 22px; border-radius: 4px;
+      background: var(--red); color: #fff; border: 1px solid var(--red-dark);
+    }
+    .btn:hover { background: var(--red-dark); }
+    .btn.alt { background: transparent; color: var(--ink); border-color: #ccc; }
+    .tagline {
+      margin-top: 30px; font: 700 13px/1 Arial, sans-serif;
+      letter-spacing: 1.5px; color: var(--red); text-transform: uppercase;
+    }
+    .note { margin-top: 14px; font-size: 12px; color: #999; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="kicker">Shipley Farms Beef</div>
+    <p class="code">404</p>
+    <h1>This pasture is empty</h1>
+    <p>We couldn't find the page you were looking for, but everything you actually need is one click away.</p>
+    <hr class="rule">
+    <div class="actions">
+      <a class="btn" href="https://shipleyfarmsbeef.com">Back to the farm</a>
+      <a class="btn alt" href="https://shipleyfarmsbeef.com/all-products">Shop beef</a>
+    </div>
+    <div class="tagline">No shortcuts since 1872</div>
+    <p class="note">Hosted independently of our main site, so this page stays up even when
+      the store is down. <a href="https://healthymeats.github.io/shipley-status/">System status</a> · <a href="https://healthymeats.github.io/shipley-status/essentials.html">Hours, address and phone</a></p>
+  </div>
+</body>
+</html>

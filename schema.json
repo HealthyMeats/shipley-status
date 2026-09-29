@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema.json",
+  "title": "Shipley Farms status.json",
+  "description": "Current uptime status for shipleyfarmsbeef.com. Regenerated every few minutes by an external probe.",
+  "type": "object",
+  "required": [
+    "version",
+    "generated_at",
+    "stale",
+    "status",
+    "components"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_checked_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the probe last ran. Compare against generated_at and check.interval_seconds before trusting the reading."
+    },
+    "stale": {
+      "type": "boolean",
+      "description": "True when the probe had missed several runs AT THE MOMENT THIS FILE WAS WRITTEN. It cannot update itself afterwards, so do not trust it alone: compare the current time against stale_after."
+    },
+    "stale_after": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The instant this reading expires. If the clock is past it, treat every component as unknown regardless of what the file says. This is the field to check, not `stale`."
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "indicator",
+        "severity",
+        "description"
+      ],
+      "properties": {
+        "indicator": {
+          "enum": [
+            "operational",
+            "degraded",
+            "partial_outage",
+            "major_outage",
+            "unknown"
+          ]
+        },
+        "severity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4,
+          "description": "0 operational, 1 unknown, 2 degraded, 3 partial outage, 4 major outage."
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "check": {
+      "type": "object",
+      "properties": {
+        "interval_seconds": {
+          "type": "integer"
+        },
+        "method": {
+          "type": "string"
+        },
+        "user_agent": {
+          "type": "string"
+        },
+        "degraded_above_ms": {
+          "type": "integer"
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "severity"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable identifier. Match on this, not on name."
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "operational",
+              "degraded",
+              "outage",
+              "unknown"
+            ]
+          },
+          "severity": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "detail": {
+            "type": "string"
+          },
+          "response_time_ms": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "uptime_90d": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Percent of checks not in outage over 90 days. Null when no checks exist."
+          },
+          "checks_90d": {
+            "type": "integer"
+          },
+          "degraded_checks_90d": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "incidents": {
+      "type": "object",
+      "properties": {
+        "open": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "recent": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "uptime": {
+      "type": "object"
+    }
+  }
+}

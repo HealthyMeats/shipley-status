@@ -1,0 +1,16 @@
+OPERATIONAL
+# All systems operational
+# generated 2026-09-29T01:17:59+00:00
+# last_checked 2026-09-29T00:37:12+00:00
+# stale no
+# expires 2026-09-29T02:07:12+00:00  (past this, treat as unknown)
+# docs llms.txt, schema.json, status.json, feed.xml
+
+website     operational   100.000%
+catalog     operational   100.000%
+cart        operational   100.000%
+accounts    operational   97.500%
+wholesale   operational   100.000%
+gift_cards  operational   100.000%
+api         operational   100.000%
+tls         operational   100.000%

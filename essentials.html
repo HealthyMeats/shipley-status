@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<!--
+  Shipley Farms Beef - PRIORITY fallback / 404 / origin-down page.
+
+  STANDALONE PAGE + ONE DELIBERATELY-REMOTE IMAGE (a live server probe).
+  The hero <img> points at the MAIN SITE's own file:
+    https://shipleyfarmsbeef.com/files/Shipley_Farms_Hillside_View.jpg
+  This is intentional. If that photo loads, the main server is reachable and
+  serving files. If it fails, the animated red flow-field fallback shows instead,
+  which is the visual signal that the whole server is down. Use the SAME image as
+  the hero on the main site, so a shared screenshot tells you at a glance:
+  hillside photo = server up; flowing red pattern = server down.
+  Everything else (CSS, JS, both games, confetti, the flow-field) is inline: no
+  fonts, CDNs, third-party scripts, or fetch(). Keep it that way: this page has to render
+  from a single object on a host that knows nothing about our stack.
+
+  Published by status/build_public_site.py to https://healthymeats.github.io/shipley-status/essentials.html, on GitHub
+  Pages, which shares no infrastructure with the store. The IPFS plan this file
+  was originally written for is dead: the free public gateways stopped serving content on
+  2026-09-21 and a dedicated gateway is a paid product.
+
+  No manual status to maintain: the Open/Closed badge and "today" highlight are
+  COMPUTED live from the fixed hours below (America/New_York). Only holidays can
+  drift, since the page has no way to know about those.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shipley Farms Beef - Essentials</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root {
+      --red: #f80010; --red-dark: #c90000; --ink: #3d3d3d;
+      --cream: #eae5dc; --white: #ffffff; --line: #e3ddd2; --ok: #2e7d4f; --muted:#888;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--cream); color: var(--ink);
+      font: 16px/1.55 Georgia, "Times New Roman", serif;
+      display: flex; justify-content: center; padding: 24px 16px 56px;
+    }
+    .wrap { width: 100%; max-width: 880px; }
+
+    .rise { opacity: 0; transform: translateY(10px); animation: rise .6s ease forwards; }
+    .rise:nth-child(2){animation-delay:.06s} .rise:nth-child(3){animation-delay:.12s}
+    .rise:nth-child(4){animation-delay:.18s} .rise:nth-child(5){animation-delay:.24s}
+    .rise:nth-child(6){animation-delay:.30s} .rise:nth-child(7){animation-delay:.36s}
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    /* hero: one pinned photo (relative path) with branded fallback + Ken Burns */
+    /* height via padding-ratio (16:7) works on every browser, unlike aspect-ratio */
+    .hero { position: relative; height: 0; padding-bottom: 43.75%; overflow: hidden;
+      border-radius: 10px; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .hero-fallback { position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px; text-align: center; overflow: hidden;
+      background: #08040a; color: #f4efe6; }
+    .hero-fallback .fractal { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; display: block; }
+    .hero-fallback b, .hero-fallback small { position: relative; z-index: 1; }
+    .hero-fallback b { font: 700 27px/1 Georgia; letter-spacing: .5px; text-shadow: 0 0 20px rgba(248,0,16,.75); }
+    .hero-fallback small { font: 700 11px/1 "Courier New", monospace; letter-spacing: 3px;
+      text-transform: uppercase; color: #e9c45e; }
+    .hero img { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+      transform-origin: 60% 50%; animation: kenburns 24s ease-in-out infinite alternate; }
+    @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.07); } }
+
+    header { text-align: center; margin: 18px 0; }
+    .kicker { font: 700 12px/1 Arial, sans-serif; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--red-dark); }
+    h1 { font-size: 28px; margin: 8px 0 2px; color: #2c2c2c; }
+    .tag { color: var(--muted); font-style: italic; margin: 0; font-size: 14px; }
+
+    .live { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+      padding: 6px 14px; border-radius: 999px; font: 700 13px/1 Arial, sans-serif;
+      background: rgba(136,136,136,0.14); color: var(--muted); }
+    .live.open { background: rgba(46,125,79,0.12); color: var(--ok); }
+    .live.shut { background: rgba(200,0,0,0.10); color: var(--red-dark); }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+    .live.open .dot { animation: pulse 1.6s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+    .columns { display: grid; gap: 14px; }
+    @media (min-width: 720px) { .columns { grid-template-columns: 1fr 1fr; align-items: start; } }
+    .side { display: grid; gap: 14px; align-content: start; }
+
+    .card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; }
+    .card h2 { font: 700 12px/1 Arial, sans-serif; text-transform: uppercase;
+      letter-spacing: 1.2px; color: var(--red-dark); margin: 0 0 12px; }
+    .row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; }
+    .row + .row { border-top: 1px solid var(--line); }
+    .row .k { color: var(--muted); } .row .v { text-align: right; font-weight: 600; }
+    .row.today { background: #fbf3f3; margin: 0 -8px; padding: 7px 8px; border-radius: 4px; }
+    .row.today .k::after { content: " \00b7 today"; color: var(--red); font: italic 12px Georgia; }
+    a { color: var(--red-dark); text-decoration: none; } a:hover { text-decoration: underline; }
+
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btn { display: block; text-align: center; padding: 14px; border-radius: 6px;
+      font: 700 14px/1 Arial, sans-serif; background: var(--red); color: #fff;
+      border: 1px solid var(--red-dark); transition: transform .08s; cursor: pointer; }
+    .btn:hover { background: var(--red-dark); } .btn:active { transform: scale(.97); }
+    .btn.alt { background: transparent; color: var(--ink); border-color: #ccc; }
+    .retry { display: block; margin: 14px auto 0; cursor: pointer; padding: 11px 20px; border-radius: 999px;
+      border: 1px solid var(--red-dark); background: var(--red); color: #fff; font: 700 13px/1 Arial, sans-serif;
+      letter-spacing: .5px; transition: transform .08s, background .15s; }
+    .retry:hover { background: var(--red-dark); } .retry:active { transform: scale(.97); }
+
+    /* joke slider */
+    .joker { text-align: center; cursor: pointer; user-select: none; }
+    .joker .lead { font: 700 11px/1 Arial, sans-serif; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--red); }
+    .joker .q { margin-top: 9px; min-height: 2.8em; display: flex; align-items: center;
+      justify-content: center; font-style: italic; color: #444; }
+    .joker .a { min-height: 1.6em; font-weight: 700; color: var(--red-dark);
+      opacity: 0; transform: translateY(4px); transition: opacity .4s, transform .4s; }
+    .joker .a.show { opacity: 1; transform: none; }
+    .joker .dots { margin-top: 10px; }
+    .joker .dots i { display: inline-block; width: 6px; height: 6px; margin: 0 3px;
+      border-radius: 50%; background: #cdc4b4; }
+    .joker .dots i.on { background: var(--red); }
+
+    /* games */
+    .games { margin-top: 14px; }
+    .games-head { text-align: center; font: 700 12px/1 Arial, sans-serif; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .play-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .play-btn { cursor: pointer; padding: 14px 12px; border-radius: 8px;
+      border: 1px solid var(--red-dark); background: var(--white); color: var(--red-dark);
+      font: 700 14px/1 Arial, sans-serif; transition: transform .08s, background .15s, color .15s; }
+    .play-btn:hover { background: #fbeceb; } .play-btn:active { transform: scale(.97); }
+    .play-btn.on { background: var(--red); color: #fff; }
+    .game-body { display: none; margin-top: 12px; text-align: center; }
+    .game-body.on { display: block; }
+    canvas.game { width: 100%; max-width: 320px; height: auto; background: #f4f0e8;
+      border: 2px solid var(--ink); border-radius: 4px; touch-action: none; image-rendering: pixelated; }
+    .gscore { font: 700 13px/1 Arial, sans-serif; margin: 10px 0 4px; }
+    .gscore .new { color: var(--red); margin-left: 8px; opacity: 0; }
+    .gscore .new.show { opacity: 1; }
+    .hint { font-size: 12px; color: var(--muted); }
+    .pad { display: grid; grid-template-columns: repeat(3, 52px); gap: 6px; justify-content: center; margin: 12px auto 0; }
+    .pad.lr { grid-template-columns: repeat(2, 52px); }
+    .pad button { height: 44px; border: 1px solid var(--line); background: #fff; border-radius: 6px; font-size: 18px; cursor: pointer; }
+    .pad button:active { background: #f1ece2; }
+    .pad .sp { visibility: hidden; }
+
+    .anniv { color: var(--red); font: 700 13px/1 Arial, sans-serif; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-top: 20px; text-align: center; }
+    footer { margin-top: 14px; text-align: center; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
+    #confetti { position: fixed; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none; z-index: 60; }
+
+    /* konami stampede */
+    .cow-run { position: fixed; right: -60px; left: auto; z-index: 69; pointer-events: none; will-change: transform;
+      animation: gallop var(--d) linear var(--delay) forwards, bob .5s ease-in-out infinite; }
+    @keyframes gallop { from { transform: translateX(0); } to { transform: translateX(-112vw); } }
+    @keyframes bob { 0%,100% { margin-top: 0; } 50% { margin-top: -11px; } }
+    .konami-banner { position: fixed; left: 50%; top: 22%; transform: translateX(-50%); z-index: 70;
+      background: #f80010; color: #fff; font: 700 16px/1 Arial, sans-serif; letter-spacing: 1px;
+      padding: 14px 22px; border-radius: 999px; box-shadow: 0 12px 34px rgba(0,0,0,.32);
+      text-shadow: 0 0 12px rgba(0,0,0,.25); }
+
+    @media (prefers-reduced-motion: reduce) { .rise, .hero img { animation: none; opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <div class="wrap">
+
+    <div class="hero rise">
+      <div class="hero-fallback"><canvas class="fractal" id="fractal" aria-hidden="true"></canvas><b>Shipley Farms Beef</b><small>Est. 1872 &#183; Vilas, NC</small></div>
+      <!-- Remote on purpose: loads from the MAIN server, so it doubles as an "is the
+           server up?" probe. Photo loads = server reachable; flow-field = server down. -->
+      <img src="https://shipleyfarmsbeef.com/files/Shipley_Farms_Hillside_View.jpg"
+           alt="Shipley Farms hillside view, Vilas, North Carolina"
+           onerror="this.style.display='none'">
+    </div>
+
+    <header class="rise">
+      <div class="kicker">Shipley Farms Beef</div>
+      <h1>We're still here</h1>
+      <p class="tag">Our main site is taking a break. Thank you for your patience, here are the essentials.</p>
+      <div class="live" id="live"><span class="dot"></span><span id="liveText">Checking hours...</span></div>
+      <button class="retry" id="retryBtn">&#x21BB; Retry our main site</button>
+    </header>
+
+    <main>
+      <div class="columns rise">
+        <section class="card">
+          <h2>Hours</h2>
+          <div class="row" data-day="1"><span class="k">Monday</span><span class="v">Closed</span></div>
+          <div class="row" data-day="2"><span class="k">Tuesday</span><span class="v">Closed</span></div>
+          <div class="row" data-day="3"><span class="k">Wednesday</span><span class="v">10 AM to 5 PM</span></div>
+          <div class="row" data-day="4"><span class="k">Thursday</span><span class="v">10 AM to 5 PM</span></div>
+          <div class="row" data-day="5"><span class="k">Friday</span><span class="v">10 AM to 5 PM</span></div>
+          <div class="row" data-day="6"><span class="k">Saturday</span><span class="v">10 AM to 5 PM</span></div>
+          <div class="row" data-day="0"><span class="k">Sunday</span><span class="v">Closed</span></div>
+        </section>
+
+        <div class="side">
+          <section class="card">
+            <h2>Find &amp; Reach Us</h2>
+            <div class="row"><span class="k">Address</span><span class="v">1699 Linville Creek Rd<br>Vilas, NC 28692</span></div>
+            <div class="row"><span class="k">Phone</span><span class="v"><a href="tel:+18284841872">(828) 484-1872</a></span></div>
+          </section>
+
+          <div class="actions">
+            <a class="btn" href="https://maps.google.com/?q=1699+Linville+Creek+Rd,+Vilas,+NC+28692">Directions</a>
+            <a class="btn alt" href="tel:+18284841872">Call us</a>
+          </div>
+
+          <div class="joker card" id="joker" title="Tap for the punchline">
+            <div class="lead">Cattle Jokes</div>
+            <div class="q" id="jokeQ"></div>
+            <div class="a" id="jokeA"></div>
+            <div class="dots" id="jdots"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="games rise">
+        <div class="games-head">While you wait, enjoy playing a game</div>
+        <div class="play-row">
+          <button class="play-btn" id="btnSnake">&#x1F404; Cattle Graze</button>
+          <button class="play-btn" id="btnCatch">&#x1F33E; Feed the Herd</button>
+        </div>
+
+        <section class="game-body card" id="snakeBody">
+          <div class="gscore">Score: <span id="snakeScore">0</span> &nbsp;&#183;&nbsp; Best: <span id="snakeBest">0</span><span class="new" id="snakeNew">New best!</span></div>
+          <canvas id="snakeCanvas" class="game" width="240" height="240"></canvas>
+          <div class="hint">Arrow keys, WASD, or swipe to guide the herd to the feed.</div>
+          <div class="pad">
+            <span class="sp"></span><button data-d="up">&#9650;</button><span class="sp"></span>
+            <button data-d="left">&#9664;</button><button data-d="down">&#9660;</button><button data-d="right">&#9654;</button>
+          </div>
+        </section>
+
+        <section class="game-body card" id="catchBody">
+          <div class="gscore">Score: <span id="catchScore">0</span> &nbsp;&#183;&nbsp; Best: <span id="catchBest">0</span><span class="new" id="catchNew">New best!</span></div>
+          <canvas id="catchCanvas" class="game" width="240" height="240"></canvas>
+          <div class="hint">Arrow keys, A/D, drag, or buttons to move the trough. Catch the hay, don't drop it.</div>
+          <div class="pad lr">
+            <button data-d="left">&#9664;</button><button data-d="right">&#9654;</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="anniv rise">No shortcuts since 1872</div>
+    </main>
+
+    <footer>Hosted independently of our main site, so this page stays up (and playable) even
+      when the store is down. <a href="https://healthymeats.github.io/shipley-status/">System status</a></footer>
+  </div>
+
+  <script>
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function loadBest(key) { try { return parseInt(localStorage.getItem(key) || '0', 10) || 0; } catch (e) { return 0; } }
+  function saveBest(key, v) { try { localStorage.setItem(key, v); } catch (e) {} }
+  function clamp(v, lo, hi) { return v < lo ? lo : (v > hi ? hi : v); }
+
+  /* ---- confetti (canvas, native) ---- */
+  function confettiBurst() {
+    if (REDUCED) return;
+    var cv = document.getElementById('confetti');
+    cv.width = window.innerWidth; cv.height = window.innerHeight;
+    var cx = cv.getContext('2d'), colors = ['#f80010', '#caa33a', '#3d3d3d', '#c90000'], bits = [];
+    for (var i = 0; i < 44; i++) {
+      bits.push({ x: cv.width / 2 + (Math.random() * 160 - 80), y: cv.height / 3,
+        vx: Math.random() * 7 - 3.5, vy: Math.random() * -7 - 2, g: 0.2,
+        s: 6 + Math.random() * 5, c: colors[i % colors.length], r: Math.random() * 6,
+        vr: Math.random() * 0.3 - 0.15, life: 1 });
+    }
+    function frame() {
+      cx.clearRect(0, 0, cv.width, cv.height); var alive = false;
+      bits.forEach(function (b) {
+        b.vy += b.g; b.x += b.vx; b.y += b.vy; b.r += b.vr; b.life -= 0.011;
+        if (b.life > 0 && b.y < cv.height + 24) {
+          alive = true; cx.save(); cx.translate(b.x, b.y); cx.rotate(b.r);
+          cx.globalAlpha = Math.max(b.life, 0); cx.fillStyle = b.c;
+          cx.fillRect(-b.s / 2, -b.s / 2, b.s, b.s); cx.restore();
+        }
+      });
+      if (alive) requestAnimationFrame(frame); else cx.clearRect(0, 0, cv.width, cv.height);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---- on-brand animated flow-field (the "server down" hero fallback) ----
+     Flowing red + occasional white lines over near-black, driven by a smooth
+     time-evolving vector field, with randomized particle spawns/lifetimes so the
+     pattern keeps reshaping and is mesmerizing to watch. Stops itself the moment
+     the remote photo loads (server up), so it never wastes CPU behind the image. */
+  (function () {
+    var cv = document.getElementById('fractal'); if (!cv) return;
+    var ctx = cv.getContext && cv.getContext('2d'); if (!ctx) return;
+    var W = 0, H = 0, parts = [], raf = null;
+    var heroImg = document.querySelector('.hero img');
+    function photoPresent() { return heroImg && heroImg.complete && heroImg.naturalWidth > 0; }
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function makeParticle(p) {
+      p = p || {};
+      p.x = Math.random() * W; p.y = Math.random() * H; p.life = rnd(120, 380);
+      if (Math.random() < 0.07) { p.col = 'rgba(255,255,255,'; p.w = 1.6; }
+      else { p.col = 'hsla(' + rnd(348, 358).toFixed(0) + ',92%,' + rnd(45, 64).toFixed(0) + '%,'; p.w = rnd(0.8, 1.5); }
+      p.a = rnd(0.45, 0.85);
+      return p;
+    }
+    function field(x, y, t) {
+      return (Math.sin(x * 0.0090 + t * 0.18) + Math.cos(y * 0.0100 - t * 0.15) + Math.sin((x + y) * 0.0060 + t * 0.10)) * 1.45;
+    }
+    function init() { parts = []; var n = Math.round(W * H / 1500); for (var i = 0; i < n; i++) parts.push(makeParticle()); }
+    function resize() {
+      var r = cv.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(2, r.width | 0); H = Math.max(2, r.height | 0);
+      cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = '#08040a'; ctx.fillRect(0, 0, W, H); init();
+      if (REDUCED) staticDraw();
+    }
+    function step(t) {
+      ctx.fillStyle = 'rgba(8,4,10,0.06)'; ctx.fillRect(0, 0, W, H);
+      ctx.lineCap = 'round';
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i], a = field(p.x, p.y, t);
+        var nx = p.x + Math.cos(a) * 1.9, ny = p.y + Math.sin(a) * 1.9;
+        ctx.lineWidth = p.w; ctx.strokeStyle = p.col + p.a + ')';
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(nx, ny); ctx.stroke();
+        p.x = nx; p.y = ny; p.life -= 1;
+        if (p.life <= 0 || nx < -5 || nx > W + 5 || ny < -5 || ny > H + 5) makeParticle(p);
+      }
+    }
+    function staticDraw() { ctx.fillStyle = '#08040a'; ctx.fillRect(0, 0, W, H); for (var k = 0; k < 120; k++) step(k * 0.04); }
+    function loop(ts) { if (photoPresent()) { raf = null; return; } step(ts / 1000); raf = requestAnimationFrame(loop); }
+    window.addEventListener('resize', resize);
+    resize();
+    if (REDUCED) staticDraw(); else raf = requestAnimationFrame(loop);
+  })();
+
+  /* ---- retry main site (cache-busted reload of the home page) ---- */
+  (function () {
+    var b = document.getElementById('retryBtn'); if (!b) return;
+    b.addEventListener('click', function () { window.location.href = 'https://shipleyfarmsbeef.com/?retry=' + Date.now(); });
+  })();
+
+  /* ---- Konami code easter egg: a cow stampede ---- */
+  (function () {
+    var seq = ['arrowup','arrowup','arrowdown','arrowdown','arrowleft','arrowright','arrowleft','arrowright','b','a'];
+    var pos = 0;
+    document.addEventListener('keydown', function (e) {
+      var k = (e.key || '').toLowerCase();
+      if (k === seq[pos]) { pos++; if (pos === seq.length) { pos = 0; stampede(); } }
+      else { pos = (k === seq[0]) ? 1 : 0; }
+    });
+    function stampede() {
+      confettiBurst();
+      var banner = document.createElement('div');
+      banner.className = 'konami-banner';
+      banner.textContent = '🐄 Secret herd unlocked! 🐄';
+      document.body.appendChild(banner);
+      var herd = [];
+      for (var i = 0; i < 16; i++) {
+        var cow = document.createElement('div');
+        cow.className = 'cow-run'; cow.textContent = '🐄';
+        cow.style.top = (8 + Math.random() * 82) + 'vh';
+        cow.style.fontSize = (22 + Math.random() * 26) + 'px';
+        cow.style.setProperty('--d', (2.2 + Math.random() * 2.4) + 's');
+        cow.style.setProperty('--delay', (Math.random() * 1.3) + 's');
+        document.body.appendChild(cow); herd.push(cow);
+      }
+      setTimeout(function () { banner.remove(); herd.forEach(function (c) { c.remove(); }); }, 6500);
+    }
+  })();
+
+  /* ---- live open/closed from fixed hours, Eastern time ----
+     Wrapped: on any engine without Intl time-zone support, hide the badge rather
+     than show stale text. The hours table below is always the source of truth. */
+  (function () {
+    var el = document.getElementById('live');
+    try {
+      var OPEN = 10, CLOSE = 17, openDays = { 3:1, 4:1, 5:1, 6:1 };
+      var names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      function nowEastern() {
+        var p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(new Date());
+        var wd = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 }, day = 0, hour = 0;
+        p.forEach(function (x) { if (x.type === 'weekday') day = wd[x.value]; if (x.type === 'hour') hour = parseInt(x.value, 10) % 24; });
+        return { day: day, hour: hour };
+      }
+      function nextOpenDay(d) { for (var i = 1; i <= 7; i++) if (openDays[(d + i) % 7]) return (d + i) % 7; return d; }
+      var t = nowEastern(), txt = document.getElementById('liveText');
+      if (openDays[t.day] && t.hour >= OPEN && t.hour < CLOSE) { el.className = 'live open'; txt.textContent = 'Open now · until 5 PM'; }
+      else { el.className = 'live shut';
+        if (openDays[t.day] && t.hour < OPEN) txt.textContent = 'Closed · opens today at 10 AM';
+        else txt.textContent = 'Closed · opens ' + names[nextOpenDay(t.day)] + ' at 10 AM'; }
+      var row = document.querySelector('.row[data-day="' + t.day + '"]'); if (row) row.classList.add('today');
+    } catch (e) { if (el) el.style.display = 'none'; }
+  })();
+
+  /* ---- joke slider: setup, pause, punchline, advance ---- */
+  (function () {
+    var jokes = [
+      { q: 'What do you call a cow jumping on a trampoline?', a: 'A milkshake.' },
+      { q: 'What do you call a sleeping cow?', a: 'A bulldozer.' },
+      { q: 'What did the mama cow say to the baby cow?', a: "It's pasture bedtime!" },
+      { q: 'Why did the cow cross the road?', a: 'To get to the udder side.' },
+      { q: 'Where do cows go for lunch?', a: 'The moo-vies.' },
+      { q: "What is a cow's favorite school subject?", a: 'Cowculus.' },
+      { q: 'What do cows read in the morning?', a: 'The moos-paper.' }
+    ];
+    var qEl = document.getElementById('jokeQ'), aEl = document.getElementById('jokeA'), dots = document.getElementById('jdots');
+    var i = 0, revealed = false, revealT, nextT;
+    jokes.forEach(function () { dots.insertAdjacentHTML('beforeend', '<i></i>'); });
+    var pips = dots.children;
+    function clearTimers() { clearTimeout(revealT); clearTimeout(nextT); }
+    function reveal() { revealed = true; aEl.textContent = jokes[i].a; aEl.className = 'a show'; nextT = setTimeout(function () { show(i + 1); }, 4500); }
+    function show(n) {
+      clearTimers(); i = (n + jokes.length) % jokes.length; revealed = false;
+      qEl.textContent = jokes[i].q; aEl.className = 'a'; aEl.textContent = '';
+      for (var k = 0; k < pips.length; k++) pips[k].className = k === i ? 'on' : '';
+      revealT = setTimeout(reveal, 3800);
+    }
+    document.getElementById('joker').addEventListener('click', function () {
+      if (!revealed) { clearTimers(); reveal(); } else { show(i + 1); }
+    });
+    show(0);
+  })();
+
+  /* ---- games manager: only one open at a time ---- */
+  (function () {
+    var defs = {
+      snake: { btn: document.getElementById('btnSnake'), body: document.getElementById('snakeBody'), label: '🐄 Cattle Graze', factory: makeSnake, api: null, started: false },
+      catch: { btn: document.getElementById('btnCatch'), body: document.getElementById('catchBody'), label: '🌾 Feed the Herd', factory: makeCatch, api: null, started: false }
+    };
+    function close(name) {
+      var g = defs[name]; if (!g.body.classList.contains('on')) return;
+      g.body.classList.remove('on'); g.btn.classList.remove('on'); g.btn.innerHTML = g.label;
+      if (g.api) g.api.stop();
+    }
+    function open(name) {
+      for (var k in defs) if (k !== name) close(k);
+      var g = defs[name]; g.body.classList.add('on'); g.btn.classList.add('on'); g.btn.innerHTML = '✕ Hide game';
+      if (!g.started) { g.started = true; g.api = g.factory(); }
+      g.api.start();
+    }
+    function toggle(name) { defs[name].body.classList.contains('on') ? close(name) : open(name); }
+    defs.snake.btn.addEventListener('click', function () { toggle('snake'); });
+    defs.catch.btn.addEventListener('click', function () { toggle('catch'); });
+
+    /* Cattle Graze (Snake) */
+    function makeSnake() {
+      var body = document.getElementById('snakeBody');
+      var c = document.getElementById('snakeCanvas'), ctx = c.getContext('2d');
+      var scoreEl = document.getElementById('snakeScore'), bestEl = document.getElementById('snakeBest'), newBadge = document.getElementById('snakeNew');
+      var N = 12, CELL = c.width / N, snake, dir, next, food, score, best = loadBest('sf_best_snake'), recorded, dead, timer = null;
+      bestEl.textContent = best;
+      function rndCell() { return { x: (Math.random() * N) | 0, y: (Math.random() * N) | 0 }; }
+      function placeFood() { do { food = rndCell(); } while (snake.some(function (s) { return s.x === food.x && s.y === food.y; })); }
+      function reset() { snake = [{ x: 6, y: 6 }, { x: 5, y: 6 }, { x: 4, y: 6 }]; dir = { x: 1, y: 0 }; next = dir; score = 0; dead = false; recorded = false; scoreEl.textContent = 0; newBadge.className = 'new'; placeFood(); draw(); }
+      function setDir(d) { var m = { up:{x:0,y:-1}, down:{x:0,y:1}, left:{x:-1,y:0}, right:{x:1,y:0} }[d]; if (!m) return; if (m.x === -dir.x && m.y === -dir.y) return; next = m; }
+      function step() {
+        if (dead) return; dir = next;
+        var head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+        if (head.x < 0 || head.y < 0 || head.x >= N || head.y >= N || snake.some(function (s) { return s.x === head.x && s.y === head.y; })) { dead = true; draw(); return; }
+        snake.unshift(head);
+        if (head.x === food.x && head.y === food.y) {
+          score++; scoreEl.textContent = score;
+          if (score > best) { best = score; bestEl.textContent = best; saveBest('sf_best_snake', best); if (!recorded && score >= 4) { recorded = true; newBadge.className = 'new show'; confettiBurst(); } }
+          placeFood();
+        } else { snake.pop(); }
+        draw();
+      }
+      function draw() {
+        ctx.fillStyle = '#f4f0e8'; ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillStyle = '#caa33a'; ctx.fillRect(food.x * CELL + 3, food.y * CELL + 3, CELL - 6, CELL - 6);
+        for (var i = 0; i < snake.length; i++) { ctx.fillStyle = i === 0 ? '#3d3d3d' : '#f80010'; ctx.fillRect(snake[i].x * CELL + 1, snake[i].y * CELL + 1, CELL - 2, CELL - 2); }
+        if (dead) { ctx.fillStyle = 'rgba(0,0,0,0.62)'; ctx.fillRect(0, 0, c.width, c.height); ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.font = '700 18px Arial'; ctx.fillText('Game Over', c.width / 2, c.height / 2 - 8); ctx.font = '12px Arial'; ctx.fillText('Tap or press any key', c.width / 2, c.height / 2 + 14); }
+      }
+      document.addEventListener('keydown', function (e) {
+        if (!body.classList.contains('on')) return;
+        var m = { arrowup:'up', w:'up', arrowdown:'down', s:'down', arrowleft:'left', a:'left', arrowright:'right', d:'right' }[e.key.toLowerCase()];
+        if (m) { e.preventDefault(); if (dead) reset(); else setDir(m); }
+      });
+      Array.prototype.forEach.call(body.querySelectorAll('.pad button'), function (b) { b.addEventListener('click', function () { if (dead) reset(); else setDir(b.dataset.d); }); });
+      var sx, sy;
+      c.addEventListener('touchstart', function (e) { var t = e.touches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+      c.addEventListener('touchend', function (e) { if (dead) { reset(); return; } var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy; if (Math.abs(dx) < 12 && Math.abs(dy) < 12) return; setDir(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up')); }, { passive: true });
+      c.addEventListener('click', function () { if (dead) reset(); });
+      return {
+        start: function () { reset(); if (timer) clearInterval(timer); timer = setInterval(step, 180); },
+        stop: function () { if (timer) { clearInterval(timer); timer = null; } }
+      };
+    }
+
+    /* Feed the Herd (catcher) */
+    function makeCatch() {
+      var body = document.getElementById('catchBody');
+      var c = document.getElementById('catchCanvas'), ctx = c.getContext('2d');
+      var scoreEl = document.getElementById('catchScore'), bestEl = document.getElementById('catchBest'), newBadge = document.getElementById('catchNew');
+      var W = c.width, H = c.height, TW = 56, TH = 14, TY = H - 24;
+      var tx, items, score, lives, best = loadBest('sf_best_catch'), recorded, dead, move, frame, running = false, raf = null;
+      bestEl.textContent = best;
+      function reset() { tx = (W - TW) / 2; items = []; score = 0; lives = 3; dead = false; recorded = false; move = 0; frame = 0; scoreEl.textContent = 0; newBadge.className = 'new'; }
+      function spawn() { items.push({ x: 8 + Math.random() * (W - 28), y: -14, s: 13, vy: 1.9 + Math.random() * 0.7 + score * 0.03 }); }
+      function update() {
+        if (dead) return;
+        tx = clamp(tx + move * 5, 2, W - TW - 2);
+        frame++;
+        var every = Math.round(Math.max(74 - score * 1.4, 32));
+        if (frame % every === 0) spawn();
+        for (var i = items.length - 1; i >= 0; i--) {
+          var it = items[i]; it.y += it.vy;
+          if (it.y + it.s >= TY && it.y <= TY + TH && it.x + it.s >= tx && it.x <= tx + TW) {
+            items.splice(i, 1); score++; scoreEl.textContent = score;
+            if (score > best) { best = score; bestEl.textContent = best; saveBest('sf_best_catch', best); if (!recorded && score >= 5) { recorded = true; newBadge.className = 'new show'; confettiBurst(); } }
+          } else if (it.y > H) { items.splice(i, 1); lives--; if (lives <= 0) dead = true; }
+        }
+      }
+      function draw() {
+        ctx.fillStyle = '#f4f0e8'; ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#6f8f55'; ctx.fillRect(0, TY + TH, W, H - (TY + TH));
+        ctx.fillStyle = '#caa33a'; ctx.strokeStyle = '#9c7d28';
+        items.forEach(function (it) { ctx.fillRect(it.x, it.y, it.s, it.s); ctx.strokeRect(it.x + 0.5, it.y + 0.5, it.s - 1, it.s - 1); });
+        ctx.fillStyle = '#3d3d3d'; ctx.fillRect(tx, TY, TW, TH); ctx.fillStyle = '#f80010'; ctx.fillRect(tx, TY, TW, 4);
+        ctx.fillStyle = '#3d3d3d'; ctx.font = '700 12px Arial'; ctx.textAlign = 'left'; ctx.fillText('Score ' + score, 8, 16);
+        ctx.textAlign = 'right'; ctx.fillStyle = '#c90000'; ctx.fillText(lives > 0 ? new Array(lives + 1).join('♥') : '', W - 8, 16);
+        if (dead) { ctx.fillStyle = 'rgba(0,0,0,0.62)'; ctx.fillRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.font = '700 18px Arial'; ctx.fillText('Game Over', W / 2, H / 2 - 8); ctx.font = '12px Arial'; ctx.fillText('Tap or press any key', W / 2, H / 2 + 14); }
+      }
+      function loop() { if (!running) return; update(); draw(); raf = requestAnimationFrame(loop); }
+      document.addEventListener('keydown', function (e) {
+        if (!body.classList.contains('on')) return;
+        var k = e.key.toLowerCase();
+        if (k === 'arrowleft' || k === 'a') { e.preventDefault(); if (dead) { reset(); return; } move = -1; }
+        else if (k === 'arrowright' || k === 'd') { e.preventDefault(); if (dead) { reset(); return; } move = 1; }
+      });
+      document.addEventListener('keyup', function (e) {
+        var k = e.key.toLowerCase();
+        if (k === 'arrowleft' || k === 'a' || k === 'arrowright' || k === 'd') move = 0;
+      });
+      Array.prototype.forEach.call(body.querySelectorAll('.pad button'), function (b) {
+        var d = b.dataset.d === 'left' ? -1 : 1;
+        function press(e) { e.preventDefault(); if (dead) { reset(); return; } move = d; }
+        function release() { move = 0; }
+        b.addEventListener('mousedown', press); b.addEventListener('touchstart', press, { passive: false });
+        b.addEventListener('mouseup', release); b.addEventListener('mouseleave', release);
+        b.addEventListener('touchend', release); b.addEventListener('touchcancel', release);
+      });
+      function pointAt(clientX) { var r = c.getBoundingClientRect(); tx = clamp((clientX - r.left) / r.width * W - TW / 2, 2, W - TW - 2); }
+      c.addEventListener('touchmove', function (e) { if (dead) return; pointAt(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
+      c.addEventListener('click', function () { if (dead) reset(); });
+      return {
+        start: function () { reset(); if (!running) { running = true; raf = requestAnimationFrame(loop); } },
+        stop: function () { running = false; if (raf) { cancelAnimationFrame(raf); raf = null; } move = 0; }
+      };
+    }
+  })();
+  </script>
+</body>
+</html>
