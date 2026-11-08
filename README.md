@@ -1,5 +1,15 @@
 # Shipley Farms system status
 
+> **Frozen since 2026-09-29.** This mirror has not been republished since its only commit,
+> `status: 2026-09-29T01:18:11Z`. Every file here, including `status.json`, `status.txt` and
+> the board's "operational" banner, describes the store as it was at 2026-09-29 00:37 UTC.
+> Treat nothing here as current. The live board is <https://shipleyfarmsbeef.com/status>,
+> with machine-readable files at <https://shipleyfarmsbeef.com/files/status.json> and
+> <https://shipleyfarmsbeef.com/files/status.txt>.
+>
+> This repository is not retired: it is still the publishing target for the off-origin
+> mirror, and the next republish replaces this whole file, banner included.
+
 The status board for the Shipley Farms online store lives at
 **<https://shipleyfarmsbeef.com/status>**.
 
